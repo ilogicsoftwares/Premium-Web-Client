@@ -1,0 +1,26 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registrado</title>
+    <link rel="stylesheet" href="~/Content/w3.css">
+</head>
+<body class="w3-display-container w3-display-middle w3-blue">
+    <div class="w3-center">
+        <img src="~/img/logogrande.png" />
+         <h1>@ViewBag.Msg</h1>
+        <h3>Redireccionando a ingreso</h3>
+    </div>
+    <script>
+        window.setTimeout(function () {
+            location.href = "/Home/Login";
+        }, 3000);
+    </script>
+</body>
+</html>

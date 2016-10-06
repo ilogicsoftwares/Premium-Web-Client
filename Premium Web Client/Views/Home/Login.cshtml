@@ -24,14 +24,18 @@
             <br />
            
                 <div class="input-group col-xs-6 center-block">
-
-                    @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control w3-card-8", placeholder = "Nombre de Usuario", type = "text" })
-                    @Html.ValidationMessageFor(Model=>Model.UserName,null,new {@style="color:Red" })
-                    @Html.TextBoxFor(Model => Model.PassWord, new { @class = "form-control w3-card-8", placeholder = "Contraseña", type = "password", style = "margin-top:2px" })
-                    @Html.ValidationMessageFor(Model => Model.PassWord, null, new { @style = "color:Red" })
+                    <p>
+                        @Html.TextBoxFor(Model => Model.UserName, new { @class = "form-control w3-card-8", placeholder = "Nombre de Usuario", type = "text" })
+                        @Html.ValidationMessageFor(Model => Model.UserName, null, new { @style = "color:Red" })
+                    </p>
+                    <p>
+                        @Html.TextBoxFor(Model => Model.PassWord, new { @class = "form-control w3-card-8", placeholder = "Contraseña", type = "password", style = "margin-top:2px" })
+                        @Html.ValidationMessageFor(Model => Model.PassWord, null, new { @style = "color:Red" })
+                    </p>
+                        <p style="color:indianred" class="text-center">@Html.ViewBag.errokey</p>
                     <button type="submit" class="btn btn-default pull-right" style = "margin-top:2px">Ingresar</button>      
                     <div class="text-left">
-                        <a href="#">Registrate</a><br />
+                        <a href="/Home/Registro">Registrate</a><br />
                         <a href="#">Recuperar Contraseña</a>
                     </div>
                    

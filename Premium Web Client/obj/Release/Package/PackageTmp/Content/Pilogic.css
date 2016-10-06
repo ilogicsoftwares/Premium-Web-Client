@@ -1,0 +1,24 @@
+﻿body {
+}
+
+
+.jumbotron  {
+    background-color:#337ab7;
+    color:white;
+    font-weight:bold;
+   margin:unset;
+   margin-bottom:10px;
+}
+
+.jumbotron h1{
+   margin:20px;
+}
+
+section{
+    background-color:white;
+    color:black ;
+}
+
+.well{
+    font-size:large;
+}

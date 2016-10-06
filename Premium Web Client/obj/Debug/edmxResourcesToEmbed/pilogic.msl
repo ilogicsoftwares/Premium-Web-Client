@@ -4,10 +4,6 @@
     <EntitySetMapping Name="User">
       <EntityTypeMapping TypeName="pilogicModel.User">
         <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="expireddate" ColumnName="expireddate" />
-          <ScalarProperty Name="singupdate" ColumnName="singupdate" />
-          <ScalarProperty Name="controlusers" ColumnName="controlusers" />
-          <ScalarProperty Name="cantusers" ColumnName="cantusers" />
           <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="tokenid" ColumnName="tokenid" />
           <ScalarProperty Name="username" ColumnName="username" />
@@ -19,6 +15,10 @@
           <ScalarProperty Name="email" ColumnName="email" />
           <ScalarProperty Name="pubkey" ColumnName="pubkey" />
           <ScalarProperty Name="subkey" ColumnName="subkey" />
+          <ScalarProperty Name="cantusers" ColumnName="cantusers" />
+          <ScalarProperty Name="controlusers" ColumnName="controlusers" />
+          <ScalarProperty Name="singupdate" ColumnName="singupdate" />
+          <ScalarProperty Name="expireddate" ColumnName="expireddate" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

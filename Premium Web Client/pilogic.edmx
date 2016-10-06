@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="pilogicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="pilogicModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
@@ -30,7 +30,8 @@
         <EntityContainer Name="pilogicModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="pilogicModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -68,10 +69,6 @@
           <EntitySetMapping Name="User">
             <EntityTypeMapping TypeName="pilogicModel.User">
               <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="expireddate" ColumnName="expireddate" />
-                <ScalarProperty Name="singupdate" ColumnName="singupdate" />
-                <ScalarProperty Name="controlusers" ColumnName="controlusers" />
-                <ScalarProperty Name="cantusers" ColumnName="cantusers" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="tokenid" ColumnName="tokenid" />
                 <ScalarProperty Name="username" ColumnName="username" />
@@ -83,6 +80,10 @@
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="pubkey" ColumnName="pubkey" />
                 <ScalarProperty Name="subkey" ColumnName="subkey" />
+                <ScalarProperty Name="cantusers" ColumnName="cantusers" />
+                <ScalarProperty Name="controlusers" ColumnName="controlusers" />
+                <ScalarProperty Name="singupdate" ColumnName="singupdate" />
+                <ScalarProperty Name="expireddate" ColumnName="expireddate" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

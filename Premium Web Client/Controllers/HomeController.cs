@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using Premium_Web_Client.Models;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Premium_Web_Client.Controllers
 {
@@ -47,6 +49,24 @@ namespace Premium_Web_Client.Controllers
             }
             dbcontext.Dispose();
         }
+        public JsonResult ValidateEmail(string email)
+        {
+
+            pilogicEntities dbcontext = new pilogicEntities();
+            User userget = dbcontext.User.Where(x => x.email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
+            if (userget != null)
+            {
+
+                return Json("El email ya se encuentra Registrado", JsonRequestBehavior.AllowGet);
+
+            }
+            else
+            {
+                return Json(true, JsonRequestBehavior.AllowGet);
+
+            }
+            dbcontext.Dispose();
+        }
         [HttpPost]
         public ActionResult Registrado(RegisterModel registro)
         {
@@ -56,7 +76,7 @@ namespace Premium_Web_Client.Controllers
             User newuser = new User();
             newuser.tokenid = registro.LoginName.Trim();
             newuser.username = registro.LoginName.Trim();
-            newuser.password = registro.Password;
+            newuser.password = sha256(registro.Password);
             newuser.email = registro.Email;
             newuser.pubkey = "pub-c-358c0c48-3aa1-45d2-b23c-f4a789ab414e";
             newuser.subkey = "sub-c-c930c986-cdc4-11e5-8a35-0619f8945a4f";
@@ -80,24 +100,46 @@ namespace Premium_Web_Client.Controllers
             return View();
 
         }
+        private string sha256(string password)
+        {
+            SHA256Managed crypt = new SHA256Managed();
+            string hash = String.Empty;
+            byte[] crypto = crypt.ComputeHash(Encoding.ASCII.GetBytes(password), 0, Encoding.ASCII.GetByteCount(password));
+            foreach (byte theByte in crypto)
+            {
+                hash += theByte.ToString("x2");
+            }
+            return hash.Substring(0,11);
+        }
 
         [HttpPost]
         public ActionResult Login(LoginModel userlogin)
         {
+           
             if (ModelState.IsValid)
 
             {
+
                 pilogicEntities dbcontext = new pilogicEntities();
-                
+              
                 User userget = dbcontext.User.Where(x => x.username.Equals(userlogin.UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                if (userlogin.PassWord == userget.password)
+                
+                if (sha256(userlogin.PassWord) == userget.password)
                 {
                     FormsAuthentication.SetAuthCookie(userget.username, true);
-                    return View("Ingreso");
+                   
+                    if (Session["UserLoged"] == null && userget != null)
+                    {
+                        Session["UserLoged"] = userget;
+
+                    }
+                   
+                    return Redirect("/Home/ClientPanel");
 
                 }
                 else
                 {
+                    ViewBag.errokey = "Contraseña Invalida";
                     return View("Login");
                 }
                 dbcontext.Dispose();
@@ -108,91 +150,36 @@ namespace Premium_Web_Client.Controllers
             }
             
         }
+        
 
-        // GET: Home/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
+       
         public ActionResult Logout()
 
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            Session.Clear();
+            return RedirectToAction("Login", "Home");
         }
         [Authorize]
-        public ActionResult Ingreso(LoginModel userlogin)
+        public ActionResult ClientPanel()
         {
 
-
-            return View();
-
-        }
-
-        // GET: Home/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Home/Create
-        [HttpPost]
-        public ActionResult Create(FormCollection collection)
-        {
-            try
+           if (Session["UserLoged"] == null)
             {
-                // TODO: Add insert logic here
+                return Redirect("/Home/Logout");
 
-                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            User logeduser = (User)Session["UserLoged"];
+            
+            return View(logeduser);
+           
         }
+
+       
+
+      
 
         // GET: Home/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: Home/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: Home/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Home/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+      
     }
 }
