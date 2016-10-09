@@ -134,7 +134,7 @@ namespace Premium_Web_Client.Controllers
 
                     }
                    
-                    return Redirect("/Home/ClientPanel");
+                    return Redirect("/ClientPanel/Index");
 
                 }
                 else
@@ -151,29 +151,25 @@ namespace Premium_Web_Client.Controllers
             
         }
         
-
+        public ActionResult Inicio()
+        {
+            return View();
+        }
        
         public ActionResult Logout()
 
         {
             FormsAuthentication.SignOut();
             Session.Clear();
-            return RedirectToAction("Login", "Home");
+            return RedirectToAction("Index", "Home");
         }
-        [Authorize]
-        public ActionResult ClientPanel()
+  
+   /*     public ActionResult ClientPanel()
         {
 
-           if (Session["UserLoged"] == null)
-            {
-                return Redirect("/Home/Logout");
-
-            }
-            User logeduser = (User)Session["UserLoged"];
-            
-            return View(logeduser);
+        
            
-        }
+        }*/
 
        
 

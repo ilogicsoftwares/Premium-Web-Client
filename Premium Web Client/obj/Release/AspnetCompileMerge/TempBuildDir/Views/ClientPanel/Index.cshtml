@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNet.Identity
-@model User 
+@model User
 
 @{
     Layout = null;
@@ -9,31 +9,50 @@
 <html>
 <title>Client Panel</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link href="~/Content/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="~/Content/w3.css">
-<link href='https://fonts.googleapis.com/css?family=RobotoDraft' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-<style>
-    html, body, h1, h2, h3, h4, h5 {
-        font-family: "RobotoDraft", "Roboto", sans-serif;
-    }
 
-    .w3-sidenav a {
-        padding: 16px;
-    }
-</style>
+
+
+
 <body>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <link href="~/Content/stylish-portfolio.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/w3.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
 
     <!-- Barra de Navegacion -->
-    <nav class="w3-sidenav w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:320px;" id="mySidenav">
+       <nav class="w3-sidenav w3-collapse w3-white w3-animate-left w3-card-2" style="z-index:3;width:320px;" id="mySidenav">
         <a href="javascript:void(0)" class="w3-border-bottom w3-large text-center"><img src="~/img/logogrande.png" style="width:15%;">Premium Web Client</a>
         <a href="javascript:void(0)" onclick="w3_close()" title="Close Sidemenu"
            class="w3-hide-large w3-closenav w3-large">Close<i class="fa fa-remove"></i></a>
-        <a href="javascript:void(0)" class="w3-dark-blue w3-btn w3-hover-black w3-left-align" onclick="ProductFilter()">Buscar Productos<i class="w3-padding-left fa fa-search"></i></a>
+        <a href="javascript:void(0)" class="w3-dark-blue w3-btn w3-hover-black w3-left-align" onclick="">Menu Principal<i class="w3-padding-left fa fa-bars"></i></a>
+        
+        <!--AdminMenu-->                
+                    <a data-toggle="collapse" data-target="#Admin" href="#"><i class="fa fa-briefcase w3-padding-right" style="color:burlywood;font-size:larger"></i>Administración</a>
+                    <div id="Admin" class="panel-collapse collapse">
+                        <div class="list-group">
+                            <a href="#" onclick="MostrarForm('/ClientPanel/Clientes')" class="list-group-item">Clientes</a>
+                            <a href="#" onclick="MostrarForm('/ClientPanel/Proveedores')" class="list-group-item">Proveedores</a>
+                            <a href="#" onclick="MostrarForm('/ClientPanel/Productos')" class="list-group-item">Productos</a>
+                        </div>
+                     </div>
+          <!--AdminMenu-->
+           <!--AdminVentas-->
+           <a data-toggle="collapse" data-target="#Ventas" href="#"><i class="fa fa-money w3-padding-right"  style="color:darkseagreen;font-size:larger"></i>Ventas</a>
+           <div id="Ventas" class="panel-collapse collapse">
+               <div class="list-group">
+                   <a href="#" onclick="MostrarForm('/ClientPanel/Presupuesto')" class="list-group-item">Presupuesto</a>
+                  
+               </div>
+           </div>
+           <!--AdminVentas-->
 
-        <a href="javascript:void(0)"><i class="fa fa-paper-plane w3-padding-right"></i>Enviar Via Email</a>
-        <a href="javascript:void(0)"><i class="fa fa-bars w3-padding-right"></i>Menu Principal</a>
-        <a href="javascript:void(0)"><i class="fa fa-power-off w3-padding-right"></i>Salir</a>
+        
+      
+        <a href="javascript:void(0)"><i class="fa fa-shopping-cart w3-padding-right" style="color:orangered;font-size:larger"></i>Compras</a>
+        <a><i class="fa fa-university w3-padding-right" style="color:dimgrey;font-size:larger"></i>Bancos</a>
+        <a href="/Home/Logout" ><i class="fa fa-power-off w3-padding-right" style="color:red;font-size:larger"></i>Salir</a>
         
     </nav>
 
@@ -52,16 +71,16 @@
                     </p>
                     <p>
                         <label>Que Contenga el nombre:</label>
-                        <input class="w3-input w3-border w3-hover-border-black" type="text" id="txtNombre" >
+                        <input class="w3-input w3-border w3-hover-border-black" type="text" id="txtNombre">
                     </p>
                     <p>
                         <label>Grupo:</label>
                         <select class="w3-select w3-border" name="option" id="grupoSelect">
                             <option value="" disabled selected>Grupos de inventario</option>
                             <option w3-repeat="grupos">{{nombre}}</option>
-                        </select>              
-                     </p>                    
-                
+                        </select>
+                    </p>
+
 
                     <p>
                         <a class="w3-btn w3-red" onclick="document.getElementById('id01').style.display='none'">Cancelar <i class="fa fa-remove"></i></a>
@@ -76,20 +95,20 @@
     <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" title="Close Sidemenu" id="myOverlay"></div>
 
     <!-- Page content -->
-   
+
     <div class="w3-main" style="margin-left:320px;">
         <i class="fa fa-bars w3-opennav w3-hide-large w3-xlarge w3-margin-left w3-margin-top" onclick="w3_open()"></i>
         <!-- Boton Pequeño de Busqueda -->
         <a href="javascript:void(0)" class="w3-hide-large w3-blue w3-btn w3-right w3-margin-top w3-margin-right" onclick="ProductFilter()"><i class="fa fa-search"></i></a>
         <!-- Boton Pequeño de Busqueda -->
-
-       <!--Diferentes Ventanas-->
-        <div id="Inicio" class="w3-container person">
-            <br>
+        <!--Diferentes Ventanas-->
+        <div id="Form" class="w3-container person">
+            <!-- <br>
+                 Html.Partial("~/Views/Home/Inicio.cshtml")
             <img class="w3-round  w3-animate-top" src="~/Content/img_avatar3.png" style="width:20%;">
             <h5 class="w3-opacity">Bienvenido @User.Identity.GetUserName()</h5>
             <h4><i class="fa fa-filter"></i>Consulta de Precios y existencia de productos</h4>
-          
+
             <hr>
             <table id="ProductTable" class="w3-table w3-bordered w3-striped" style="font-size:0.9em">
                 <tr>
@@ -104,11 +123,11 @@
                     <td>{{precio1}}</td>
                     <td>{{existencia}}</td>
                 </tr>
-            </table>
+            </table>-->
 
         </div>
         <!--Diferentes Ventanas-->
-       
+
 
     </div>
 
@@ -119,15 +138,15 @@
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.1/jsgrid-theme.min.css" />
 
     <script src="~/Scripts/w3data.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.1/jsgrid.min.js"></script>    
-   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.1/jsgrid.min.js"></script>
+
     <script>
-        StartService("@Model.pubkey","@Model.subkey","Administrativo","@Model.tokenid","@Model.tokenid"+"@Model.controlusers.ToString()");
-      //  document.getElementById("ProductTable").style.display = "none";
-        $(document).ready(function () {
-            SendSql('Select codigo,nombre,precio1,existencia from articulo limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
-        });
-        
+
+        StartService("@Model.pubkey","@Model.subkey","Administrativo","@Model.username","@Model.tokenid");
+        MostrarForm("/ClientPanel/Inicio");
+        //  document.getElementById("ProductTable").style.display = "none";
+
+      
     function w3_open() {
         document.getElementById("mySidenav").style.display = "block";
         document.getElementById("myOverlay").style.display = "block";
@@ -149,13 +168,13 @@
         }
     }
 
-    openMail("Inicio")
+
 
     function ProductFilter() {
         document.getElementById('id01').style.display = "block";
         SendSql('Select nombre from grupos', 'grupos', 'w3DisplayData("grupoSelect", Jsonres)');
-        
-      
+
+
     }
     function finalFilter() {
 
@@ -164,36 +183,29 @@
         var idselect = $("#grupoSelect option:selected").text();
         document.getElementById('id01').style.display = 'none';
         if (idname != "") {
-           
+
              SendSql('Select codigo,nombre,precio1,existencia from articulo where nombre like "%' + idname + '%" limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
 
         } else if (idprod != "")
             {
-      
+
         SendSql('Select codigo,nombre,precio1,existencia from articulo where codigo="'+idprod+'" limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
-        
+
         } else {
             if (idselect == "Grupos de inventario") {
                 SendSql('Select codigo,nombre,precio1,existencia from articulo limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
             } else {
-                
+
                 SendSql('Select articulo.codigo,articulo.nombre,articulo.precio1,articulo.existencia,grupos.nombre as grupo from articulo inner join grupos on grupos.codigo=articulo.grupo where grupos.nombre="'+idselect+'" limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
             }
 
         }
     }
-    
-function openMail(personName) {
-        var i;
-        var x = document.getElementsByClassName("person");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        x = document.getElementsByClassName("test");
-        for (i = 0; i < x.length; i++) {
-            x[i].className = x[i].className.replace(" w3-light-grey", "");
-        }
-        document.getElementById(personName).style.display = "block";
+
+function MostrarForm(Partialview) {
+
+    $("#Form").load(Partialview);
+     //document.getElementById("Form").style.display = "block";
         // event.currentTarget.className += " w3-light-grey";
     }
     </script>
@@ -202,6 +214,19 @@ function openMail(personName) {
 var openTab = document.getElementById("firstTab");
     //openTab.click();
     </script>
+    <style>
+        html, body, h1, h2, h3, h4, h5 {
+            font-family: "RobotoDraft", "Roboto", sans-serif;
+        }
+
+        .w3-sidenav a {
+            padding: 16px;
+        }
+        
+  
+}
+        
+    </style>
 
 </body>
 </html>

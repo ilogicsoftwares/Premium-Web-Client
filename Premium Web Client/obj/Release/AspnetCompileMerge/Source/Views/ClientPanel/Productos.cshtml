@@ -1,0 +1,29 @@
+﻿
+@{ 
+    Layout = null;
+}
+<div id="Productos" class="w3-container person">
+  
+    <table id="ProductTable" class="w3-table w3-bordered w3-striped" style="font-size:0.9em">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Existecia</th>
+        </tr>
+        <tr w3-repeat="articulo" class="w3-container">
+            <td>{{codigo}}</td>
+            <td class="text-info">{{nombre}}</td>
+            <td>{{precio1}}</td>
+            <td>{{existencia}}</td>
+        </tr>
+    </table>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        SendSql('Select codigo,nombre,precio1,existencia from articulo limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');
+    });
+
+</script>

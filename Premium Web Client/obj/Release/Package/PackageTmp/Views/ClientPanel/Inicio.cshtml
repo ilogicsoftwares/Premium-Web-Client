@@ -1,0 +1,28 @@
+﻿@using Microsoft.AspNet.Identity
+@{ 
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div id="InitMsg" class="w3-container" >
+        
+        <div class="text-center" style="padding-top:20%">
+            <img class="w3-round  w3-animate-top" src="~/Content/img_avatar3.png" style="width:20%;">
+            <h5 class="w3-opacity">Bienvenido @User.Identity.GetUserName()</h5>
+
+        </div>
+       
+    </div>
+   
+  
+</body>
+</html>
+

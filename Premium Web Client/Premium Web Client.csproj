@@ -165,6 +165,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ClientPanelController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -291,10 +292,15 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\Registro.cshtml" />
     <Content Include="Views\Home\Registrado.cshtml" />
-    <Content Include="Views\Home\ClientPanel.cshtml" />
+    <Content Include="Views\ClientPanel\Inicio.cshtml" />
+    <Content Include="Views\ClientPanel\Index.cshtml" />
+    <Content Include="Views\ClientPanel\Admin.cshtml" />
+    <Content Include="Views\ClientPanel\Presupuesto.cshtml" />
+    <Content Include="Views\ClientPanel\Productos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Clientanel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
