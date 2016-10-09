@@ -13,6 +13,12 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
     <File Include="bin/Antlr3.Runtime.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="bin/App_global.asax.compiled">
+      <publishTime>05/10/2016 21:50:04</publishTime>
+    </File>
+    <File Include="bin/App_global.asax.dll">
+      <publishTime>05/10/2016 21:50:04</publishTime>
+    </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>02/03/2015 09:32:26</publishTime>
     </File>
@@ -125,7 +131,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/Premium Web Client.dll">
-      <publishTime>10/05/2016 18:20:59</publishTime>
+      <publishTime>05/10/2016 21:49:20</publishTime>
     </File>
     <File Include="bin/roslyn/csc.exe">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -248,10 +254,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/09/2016 14:09:15</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>06/09/2016 14:03:57</publishTime>
+      <publishTime>10/05/2016 21:13:55</publishTime>
     </File>
     <File Include="pilogic.edmx.diagram">
-      <publishTime>10/09/2016 13:56:41</publishTime>
+      <publishTime>05/10/2016 21:44:07</publishTime>
+    </File>
+    <File Include="PrecompiledApp.config">
+      <publishTime>05/10/2016 21:49:52</publishTime>
     </File>
     <File Include="Scripts/bootstrap.js">
       <publishTime>06/09/2016 16:48:25</publishTime>
@@ -347,7 +356,7 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/09/2016 14:03:29</publishTime>
     </File>
     <File Include="Views/Home/Index.cshtml">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>10/07/2016 03:19:30</publishTime>
     </File>
     <File Include="Views/Home/Login.cshtml">
       <publishTime>09/09/2016 22:05:45</publishTime>
@@ -389,13 +398,13 @@ editando este archivo MSBuild. Para conocer más acerca de esto, visite http://g
       <publishTime>06/09/2016 19:21:30</publishTime>
     </File>
     <File Include="Views/Web.config">
-      <publishTime>10/05/2016 19:29:57</publishTime>
+      <publishTime>10/05/2016 21:16:30</publishTime>
     </File>
     <File Include="Views/_ViewStart.cshtml">
       <publishTime>06/09/2016 14:03:29</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>10/05/2016 19:25:19</publishTime>
+      <publishTime>05/10/2016 21:49:47</publishTime>
     </File>
   </ItemGroup>
 </Project>

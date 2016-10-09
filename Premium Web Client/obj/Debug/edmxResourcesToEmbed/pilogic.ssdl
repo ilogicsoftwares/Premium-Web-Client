@@ -7,7 +7,7 @@
       <PropertyRef Name="username" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="tokenid" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="tokenid" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="password" Type="nvarchar" MaxLength="12" Nullable="false" />
     <Property Name="corpname" Type="varchar" MaxLength="50" />

@@ -1,0 +1,78 @@
+﻿@model Premium_Web_Client.Models.RegisterModel
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Registro</title>
+
+     
+    <link href="~/Content/Pilogic.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/Content/w3.css">
+
+</head>
+<body>
+    
+        <div class="jumbotron w3-card-8">
+            <h1 class="w3-center">Registrate y obten Conexión.</h1>
+        </div>
+ 
+    <div class="container">
+        <div class="w3-card-4">
+            <header class="w3-container w3-light-grey">
+                <h3>Información del Usuario</h3>
+            </header>
+            <div class="w3-container">
+                <hr>
+               @using (Html.BeginForm("Registrado", "Home", FormMethod.Post))
+               {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <form >
+                    <div class="form-group">
+                        @Html.LabelFor(Model => Model.LoginName, "Nombre de Usuario")
+                        @Html.TextBoxFor(Model => Model.LoginName, new { @class = "w3-input", placeholder = "Nombre de Usuario", type = "text" })
+                        @Html.ValidationMessageFor(Model => Model.LoginName, null, new { @class = "w3-text-red" })
+                    </div>
+            
+                    <div class="form-group">
+                        @Html.LabelFor(Model => Model.Email)
+                        @Html.TextBoxFor(Model => Model.Email, new { @class = "w3-input", placeholder = "Email", type = "email" })
+                        @Html.ValidationMessageFor(Model => Model.Email, null, new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(Model => Model.ConfirmEmail, "Confirmar Email")
+                        @Html.TextBoxFor(Model => Model.ConfirmEmail, new { @class = "w3-input", placeholder = "Confirmar Email", type = "email" })
+                        @Html.ValidationMessageFor(Model => Model.ConfirmEmail, null, new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(Model => Model.Password, "Contraseña")
+                        @Html.TextBoxFor(Model => Model.Password, new { @class = "w3-input", placeholder = "Contraseña", type = "password" })
+                        @Html.ValidationMessageFor(Model => Model.Password, null, new { @class = "w3-text-red" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(Model => Model.ConfirmPassword, "Confirmar Contraseña")
+                        @Html.TextBoxFor(Model => Model.ConfirmPassword, new { @class = "w3-input", placeholder = "Confirmar Contraseña", type = "password" })
+                        @Html.ValidationMessageFor(Model => Model.ConfirmPassword,null,new { @class = "w3-text-red" })
+                    </div>
+                                    <input type="submit" value="Registrar" class="w3-btn w3-margin w3-blue" />
+
+</form>
+               
+               }
+
+            </div>
+
+        </div>
+    </div>
+    @section Scripts {
+         @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryval")
+        
+    }
+</body>
+</html>

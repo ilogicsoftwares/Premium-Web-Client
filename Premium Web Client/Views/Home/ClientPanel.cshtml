@@ -122,7 +122,8 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jsgrid/1.5.1/jsgrid.min.js"></script>    
    
     <script>
-        StartService("@Model.pubkey","@Model.subkey","Administrativo","@Model.tokenid","@Model.tokenid"+"@Model.controlusers.ToString()");
+    
+        StartService("@Model.pubkey","@Model.subkey","Administrativo","@Model.username","@Model.tokenid");
       //  document.getElementById("ProductTable").style.display = "none";
         $(document).ready(function () {
             SendSql('Select codigo,nombre,precio1,existencia from articulo limit 20', 'articulo', 'w3DisplayData("ProductTable", Jsonres)');

@@ -115,15 +115,15 @@ namespace Premium_Web_Client.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel userlogin)
         {
-           
+
             if (ModelState.IsValid)
 
             {
 
                 pilogicEntities dbcontext = new pilogicEntities();
-              
+
                 User userget = dbcontext.User.Where(x => x.username.Equals(userlogin.UserName, StringComparison.CurrentCultureIgnoreCase)).FirstOrDefault();
-                
+                userget.tokenid = userget.username + DateTime.Now.TimeOfDay.ToString();
                 if (sha256(userlogin.PassWord) == userget.password)
                 {
                     FormsAuthentication.SetAuthCookie(userget.username, true);
